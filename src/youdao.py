@@ -1,5 +1,4 @@
-# *-- coding: utf-8
-#! /usr/bin/python3
+#! /usr/local/bin/python3
 import xml.etree.ElementTree as et
 from urllib.request import urlopen
 import sys
@@ -15,7 +14,7 @@ fs = '\t英： {}, 美: {}\n\t基本释义:\n\t\t{}\n\t网络释义:\n\t\t{}'
 def parse_xml(data):
 	result = fs
 	root = et.fromstring(data)
-	phonetic = root.find('.//phonetic').text.replace('\n', '')
+	phonetic = root.find('.//uk-phonetic').text.replace('\n', '')
 	us_phone = root.find('.//us-phonetic').text.replace('\n', '')
 	basic = root.find('basic')
 	basic_ex = ''
@@ -34,8 +33,11 @@ def parse_xml(data):
 
 def go_ahead(word):
 	data = get_xml(word)
-	result = parse_xml(data)
-	print(result)
+	try:
+		result = parse_xml(data)
+		print(result)
+	except AttributeError:
+		print('没有结果')
 
 def main():
 	if len(sys.argv) > 1:
