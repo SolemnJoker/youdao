@@ -1,4 +1,4 @@
-#! /usr/local/bin/python3
+#! /usr/bin/env python3
 # coding: utf-8
 import xml.etree.ElementTree as et
 from urllib.request import urlopen
