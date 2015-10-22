@@ -3,6 +3,9 @@
 import xml.etree.ElementTree as et
 from urllib.request import urlopen
 import sys
+import readline
+
+# 命令行交互
 url_query = 'http://fanyi.youdao.com/openapi.do?keyfrom=majunzhe&key=27448872&type=data&doctype=xml&version=1.1&q='
 
 isword = True
@@ -69,7 +72,7 @@ def main():
 			print('-'*80)
 	else:
 		while True:
-			word = input('>>>')
+			word = input('>>> ')
 			if '@' == word:
 				break
 			go_ahead(word)
